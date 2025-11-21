@@ -37,19 +37,19 @@ This zero-overlap for most odor categories explains the exceptional performance 
 Let's use the optimized Random Forest Classifier (RandomForestClassifier(random_state=42)) to identify which features were most influential in classifying the mushrooms.
 Python
 
-# Assuming 'best_models' dictionary contains the trained, best Random Forest model
+Assuming 'best_models' dictionary contains the trained, best Random Forest model
 best_rfc = best_models['Random Forest']
 
-# Get feature importances
+Get feature importances
 importances = best_rfc.feature_importances_
 
-# Get feature names from the encoded training data
+Get feature names from the encoded training data
 feature_names = X_train.columns
 
-# Create a Series for easy sorting and plotting
+Create a Series for easy sorting and plotting
 feature_importances = pd.Series(importances, index=feature_names).sort_values(ascending=False)
 
-# Plot the top 10 features
+Plot the top 10 features
 plt.figure(figsize=(10, 6))
 sns.barplot(x=feature_importances.head(10).values, y=feature_importances.head(10).index, palette="rocket")
 plt.title('Top 10 Feature Importances (Random Forest)')
